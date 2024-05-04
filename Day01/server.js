@@ -21,6 +21,7 @@
 const express = require('express');
 
 const app = express();
+app.use(express.json());
 const books = [
     { id: 1, name: "JavaScript: The Good Parts", price: 25.99 },
     { id: 2, name: "Eloquent JavaScript", price: 29.99 },
@@ -64,6 +65,13 @@ app.get('/books', (req, res) => {
     const result = books.filter((book) => book.price > 30.00)
     res.json(result)
 
+})
+
+app.post('/books', (req, res) => {
+    console.log(req.body);
+    const book = req.body
+    books.push(book)
+    res.json(books)
 })
 
 app.listen(8000, () => {
