@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+app.use(express.static(__dirname + '/public'));
+//static middleware
 
 const simpleLogger = (req, res, next) => {
     console.log(`Request URL: ${req.url} ${req.method} --- ${new Date().toISOString()}`);
@@ -9,9 +11,14 @@ const simpleLogger = (req, res, next) => {
     }
     next();
 }
-
-
-app.get('/hello', simpleLogger, (req, res, next) => {
+app.use(simpleLogger)//global middleware
+app.get('/', (req, res, next) => {
+    res.json({ message: 'Sweet Home' })
+})
+app.get('/naim', (req, res, next) => {
+    res.json({ message: 'Gopalgonj' })
+})
+app.get('/hello', (req, res, next) => {
     // console.log(`Request URL: ${req.url} ${req.method} --- ${new Date().toISOString()}`);
 
     res.json({ message: 'Hello World!' });
