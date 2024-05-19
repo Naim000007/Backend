@@ -1,0 +1,7 @@
+CURD Action HTTP Method EndPoint
+------------------------------------------------------------
+1.get All contacts GET /api/contacts
+2.get contacts GET /api/contacts/id
+3.create contacts POST /api/contacts
+4.update contacts PUT /api/contacts/:id
+5.delete contacts DELETE /api/contacts/:id
